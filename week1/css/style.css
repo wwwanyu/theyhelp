@@ -12,6 +12,7 @@ html {
     font-family: serif;
 }
 
+/* typography */
 h1 {
     font-size: 2.2em;
 }
@@ -40,10 +41,134 @@ body {
     font-size: 1em;
 }
 
+/* background color */
 .bg--light-blue {
     background-color: var(--light-blue);
 }
 
+/* height */
+.height-24em {
+    height: 24em;
+}
+
+/* alignment */
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* position */
+.position-absolute {
+    position: absolute;
+}
+
+.position-relative {
+    position: relative;
+}
+
+/* layout */
 .d-flex {
     display: flex;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-auto {
+    flex: auto;
+}
+
+/* spacing */
+.padding-x-1 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.margin-y-1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.gap-1 {
+    gap: 20px;
+}
+
+/* content */
+.promotion .item figure,
+.cards .item figure {
+    overflow: hidden;
+    position: relative;
+}
+
+.promotion .item figure {
+    width: 80px;
+    height: 50px;
+}
+
+.cards .item figure {
+    width: 16%;
+}
+
+.promotion .item figure img,
+.cards .item figure img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.promotion .item figure img {
+    width: 90px;
+}
+
+.cards .item figure img {
+    width: 210px;
+}
+
+.cards .item {
+    flex-basis: calc(100% / 6);
+}
+
+.cards .item:nth-of-type(1),
+.cards .item:nth-of-type(6) {
+    flex: 2;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .welcome {
+        height: 250px;
+    }
 }
