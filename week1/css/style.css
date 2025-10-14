@@ -3,10 +3,6 @@
     margin: 0;
 }
 
-:root {
-    --light-blue: rgb(193, 229, 255);
-}
-
 html {
     font-size: 16px;
     font-family: serif;
@@ -43,7 +39,7 @@ body {
 
 /* background color */
 .bg--light-blue {
-    background-color: var(--light-blue);
+    background-color: rgb(193, 229, 255);
 }
 
 /* height */
