@@ -159,25 +159,6 @@ nav a {
     margin-bottom: 1em;
 }
 
-.promotion .item:nth-child(1) {
-    grid-column-start: 1;
-    grid-column-end: 8;
-}
-
-.promotion .item:nth-child(2) {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.promotion .item:nth-child(3) {
-    grid-column-start: 5;
-    grid-column-end: 8;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
 .cards {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -270,6 +251,25 @@ nav * {
     .mobile-menu-button {
         display: none;
     }
+
+    .promotion .item:nth-child(1) {
+        grid-column-start: 1;
+        grid-column-end: 8;
+    }
+
+    .promotion .item:nth-child(2) {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .promotion .item:nth-child(3) {
+        grid-column-start: 5;
+        grid-column-end: 8;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
 }
 
 @media (min-width:600px) {}
@@ -300,5 +300,9 @@ nav * {
         flex-direction: column;
         box-shadow: -0.2em 0 0.1em rgba(0, 0, 0, 0.4);
         width: 50%;
+    }
+
+    .promotion {
+        grid-template-columns: 1fr;
     }
 }
