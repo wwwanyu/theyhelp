@@ -234,10 +234,11 @@ nav * {
     }
 }
 
+.container {
+    max-width: calc(1200px - 2em);
+}
+
 @media (min-width: 1200px) {
-    .container {
-        max-width: 1200px;
-    }
 
     .mobile-menu-button {
         display: none;
