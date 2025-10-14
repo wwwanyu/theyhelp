@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+:root {
+    --gap-1: 20px;
+}
+
 html {
     font-size: 16px;
     font-family: serif;
@@ -124,7 +128,7 @@ body {
 }
 
 .gap-1 {
-    gap: 20px;
+    gap: var(--gap-1);
 }
 
 /* components */
