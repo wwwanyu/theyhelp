@@ -9,6 +9,6 @@ mobileMenuButton.addEventListener('click', () => {
 });
 
 MobileMenuClose.addEventListener('click', () => {
-    navItems.classList.add("slideToRight");
+    navItems.classList.remove("d-block");
     body.style.overflow = 'initial';
 });
