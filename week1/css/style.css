@@ -231,7 +231,63 @@ nav * {
     display: none;
 }
 
-@media (min-width: 1200px) {
+.cell-p1 {
+    grid-area: p1;
+}
+
+.cell-p2 {
+    grid-area: p2;
+}
+
+.cell-p3 {
+    grid-area: p3;
+}
+
+.cell-t1 {
+    grid-area: t1;
+}
+
+.cell-t2 {
+    grid-area: t2;
+}
+
+.cell-t3 {
+    grid-area: t3;
+}
+
+.cell-t4 {
+    grid-area: t4;
+}
+
+.cell-t5 {
+    grid-area: t5;
+}
+
+.cell-t6 {
+    grid-area: t6;
+}
+
+.cell-t7 {
+    grid-area: t7;
+}
+
+.cell-t8 {
+    grid-area: t8;
+}
+
+.cell-t9 {
+    grid-area: t9;
+}
+
+.cell-t10 {
+    grid-area: t10;
+}
+
+.mobile-menu-button {
+    display: none;
+}
+
+@media (min-width:1200px) {
     .container {
         grid-template-columns: repeat(6, 1fr);
         grid-template-areas:
@@ -241,67 +297,27 @@ nav * {
             "t6 t6 t7 t8 t9 t10"
     }
 
-    .cell-p1 {
-        grid-area: p1;
-    }
-
-    .cell-p2 {
-        grid-area: p2;
-    }
-
-    .cell-p3 {
-        grid-area: p3;
-    }
-
-    .cell-t1 {
-        grid-area: t1;
-    }
-
-    .cell-t2 {
-        grid-area: t2;
-    }
-
-    .cell-t3 {
-        grid-area: t3;
-    }
-
-    .cell-t4 {
-        grid-area: t4;
-    }
-
-    .cell-t5 {
-        grid-area: t5;
-    }
-
-    .cell-t6 {
-        grid-area: t6;
-    }
-
-    .cell-t7 {
-        grid-area: t7;
-    }
-
-    .cell-t8 {
-        grid-area: t8;
-    }
-
-    .cell-t9 {
-        grid-area: t9;
-    }
-
-    .cell-t10 {
-        grid-area: t10;
-    }
-
-    .mobile-menu-button {
-        display: none;
-    }
-
 }
 
-@media (min-width:600px) {}
+@media screen and (min-width:600px) and (max-width:1200px) {
+    .container {
+        max-width: 90%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "p1 p1 p2 p2"
+            "p3 p3 p3 p3"
+            "t1 t2 t3 t4"
+            "t5 t6 t7 t8"
+            "t9 t9 t10 t10"
+    }
+}
 
-@media (max-width: 599px) {
+@media (max-width:600px) {
+    .container {
+        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
 
     .mobile-menu-button,
     .mobile-menu-close {
@@ -327,13 +343,5 @@ nav * {
         flex-direction: column;
         box-shadow: -0.2em 0 0.1em rgba(0, 0, 0, 0.4);
         width: 50%;
-    }
-
-    .promotion {
-        grid-template-columns: 1fr;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
     }
 }
