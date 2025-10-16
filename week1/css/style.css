@@ -160,6 +160,7 @@ nav a {
     max-width: calc(1200px - 2em);
     display: grid;
     grid-template-rows: auto;
+    margin-top: calc(var(--gap-1) * 2);
 }
 
 .promotion.item figure {
