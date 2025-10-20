@@ -1,76 +1,88 @@
 // Task 1
 // 1.建立角色的距離列表
 // 2.比較角色之間的距離
-const 悟空 = [
-    { name: '特南克斯', distance: 3 },
-    { name: '佛利沙', distance: 7 },
-    { name: '貝吉塔', distance: 5 },
-    { name: '辛巴', distance: 6 },
-    { name: '丁滿', distance: 7 },
-]
-const 特南克斯 = [
-    { name: '悟空', distance: 3 },
-    { name: '佛利沙', distance: 6 },
-    { name: '貝吉塔', distance: 6 },
-    { name: '辛巴', distance: 9 },
-    { name: '丁滿', distance: 10 },
-]
-const 佛利沙 = [
-    { name: '悟空', distance: 7 },
-    { name: '特南克斯', distance: 6 },
-    { name: '貝吉塔', distance: 10 },
-    { name: '辛巴', distance: 11 },
-    { name: '丁滿', distance: 10 },
-]
-const 貝吉塔 = [
-    { name: '悟空', distance: 5 },
-    { name: '特南克斯', distance: 6 },
-    { name: '佛利沙', distance: 10 },
-    { name: '辛巴', distance: 5 },
-    { name: '丁滿', distance: 10 },
-]
-const 辛巴 = [
-    { name: '悟空', distance: 6 },
-    { name: '特南克斯', distance: 9 },
-    { name: '佛利沙', distance: 12 },
-    { name: '貝吉塔', distance: 5 },
-    { name: '丁滿', distance: 5 },
-]
-const 丁滿 = [
-    { name: '悟空', distance: 7 },
-    { name: '特南克斯', distance: 10 },
-    { name: '佛利沙', distance: 10 },
-    { name: '貝吉塔', distance: 10 },
-    { name: '辛巴', distance: 5 },
-]
+const additionalDistance = '' || 2;
+const characters = [{
+    id: 1,
+    name: '悟空',
+    x: 0,
+    y: 0
+},
+{
+    id: 2,
+    name: '特南克斯',
+    x: 1,
+    y: -2
+},
+{
+    id: 3,
+    name: '弗利沙',
+    x: 4,
+    y: -1
+},
+{
+    id: 4,
+    name: '貝吉塔',
+    x: -4,
+    y: -1
+},
+{
+    id: 5,
+    name: '辛巴',
+    x: -3,
+    y: 3
+},
+{
+    id: 6,
+    name: '丁滿',
+    x: -1,
+    y: -4
+}]
 
 function func1(name) {
-    // 計算兩個角色之間的距離，從大到小
-    name.sort((a, b) => b.distance - a.distance);
+    // Exclude the picked character
+    const others = characters.filter((character) => character.name !== name);
+    const pickedCharacter = characters.find((character) => character.name === name);
+
+    // x,y 整理成 distance: (x + x) + ( y + y ) + additionalDistance
+    const distance = others.map((character) => ({
+        ...character,
+        distance: Math.abs(character.x) +
+            Math.abs(character.y) +
+            Math.abs(pickedCharacter.x) +
+            Math.abs(pickedCharacter.y)
+    }));
+
+    // 排序跟 others 之間的距離，從大到小
+    distance.sort((a, b) => b.distance - a.distance);
 
     // 如果符合最大跟最小的數字，要印出來
     let farthest = [];
     let nearest = [];
-    const last = name.at(-1);
-    for (let i = 0; i < name.length; i++) {
-        if (name[0].distance === name[i].distance) {
-            farthest.push(name[i]);
+    const last = distance.at(-1);
+    for (let i = 0; i < distance.length; i++) {
+        if (distance[0].distance === distance[i].distance) {
+            farthest.push(distance[i]);
         }
     }
-    for (let i = 0; i < name.length; i++) {
-        if (last.distance === name[i].distance) {
-            nearest.push(name[i]);
+    for (let i = 0; i < distance.length; i++) {
+        if (last.distance === distance[i].distance) {
+            nearest.push(distance[i]);
         }
     }
 
     // 整理結果
-    const farthestlist = farthest.map((charactor) => charactor.name).join('、');
-    const nearestlist = nearest.map((charactor) => charactor.name).join('、');
-    console.log(`print 最遠${farthestlist}；最近${nearestlist}`);
+    const farthestlist = farthest.map((character) => character.name).join('、');
+    const nearestlist = nearest.map((character) => character.name).join('、');
+    console.log(`func1('${pickedCharacter.name}') //print 最遠${farthestlist}；最近${nearestlist}`);
 }
 
-func1(辛巴);
-func1(悟空);
+func1('辛巴');
+func1('悟空');
+func1('弗利沙');
+func1('特南克斯');
+func1('貝吉塔');
+func1('丁滿');
 
 // Task 2
 function func2() { }
