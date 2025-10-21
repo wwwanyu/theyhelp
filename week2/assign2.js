@@ -140,3 +140,32 @@ func3(1);
 func3(5);
 func3(10);
 func3(30);
+
+// Task 4
+function func4(sp, stat, n) {
+    // 1. 對照 sp 跟 stat
+    // 2. stat = 1 就排除 sp
+    // 3. stat = 0 就檢查 sp
+    // 4. 找出 n 跟 sp 最接近的數字
+    // stat: convert string to number
+    // 把資料整理起來再對比
+    let carAvailable = stat.split("").map(Number);
+
+    let carStatus = sp.map((sp, index) => {
+        return {
+            availableSpace: sp,
+            carStatus: carAvailable[index]
+        };
+    });
+    const availableCars = carStatus.filter(car => car.carStatus === 0);
+    // Find the closest number to n
+    const closest = availableCars.reduce((a, b) => {
+        return Math.abs(b.availableSpace - n) < Math.abs(a.availableSpace - n) ? b : a;
+    });
+    // Get the index for the car
+    const car = carStatus.findIndex(car => car.availableSpace === closest.availableSpace);
+    console.log(`func4([${sp}],"${stat}, ${n}") // print ${car}`);
+}
+func4([3, 1, 5, 4, 3, 2], "101000", 2);
+func4([1, 0, 5, 1, 3], "10100", 4);
+func4([4, 6, 5, 8], "1000", 4);
