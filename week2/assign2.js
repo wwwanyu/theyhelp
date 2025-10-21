@@ -65,7 +65,7 @@ function func1(name) {
         } else if (character.y > 0 && pickedCharacter.y < 0) {
             dy = Math.abs(character.y - pickedCharacter.y);
         } else if (character.y < 0 && pickedCharacter.y < 0) {
-            dy = Math.abs(character.y) + Math.abs(pickedCharacter.y);
+            dy = Math.abs(character.y) + pickedCharacter.y;
         } else {
             dy = Math.abs(character.y - pickedCharacter.y);
         }
