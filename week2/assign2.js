@@ -124,3 +124,19 @@ func1('丁滿');
 
 // Task 2
 function func2() { }
+// Task 3 Find out the nth term in the sequence
+let startNumber = 25;
+const diffs = [-2, -3, 1, 2];
+
+function func3(index) {
+    let num = startNumber
+    for (let i = 0; i < index; i++) {
+        num += diffs[i % diffs.length];
+    }
+    console.log(`func3(${index});//print ${num}`);
+}
+
+func3(1);
+func3(5);
+func3(10);
+func3(30);
