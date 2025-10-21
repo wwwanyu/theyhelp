@@ -1,7 +1,6 @@
 // Task 1
 // 1.建立角色的距離列表
 // 2.比較角色之間的距離
-const additionalDistance = '' || 2;
 const characters = [{
     id: 1,
     name: '悟空',
@@ -36,22 +35,60 @@ const characters = [{
     id: 6,
     name: '丁滿',
     x: -1,
-    y: -4
+    y: 4
 }]
 
 function func1(name) {
     // Exclude the picked character
-    const others = characters.filter((character) => character.name !== name);
-    const pickedCharacter = characters.find((character) => character.name === name);
+    const others = characters.filter(character => character.name !== name);
+    const pickedCharacter = characters.find(character => character.name === name);
 
-    // x,y 整理成 distance: (x + x) + ( y + y ) + additionalDistance
-    const distance = others.map((character) => ({
-        ...character,
-        distance: Math.abs(character.x) +
-            Math.abs(character.y) +
-            Math.abs(pickedCharacter.x) +
-            Math.abs(pickedCharacter.y)
-    }));
+    const distance = others.map(character => {
+        let dx = 0;
+        let dy = 0;
+        let additionalDistance = 0;
+
+        // X 判斷
+        if (character.x < 0 && pickedCharacter.x > 0) {
+            dx = Math.abs(pickedCharacter.x - character.x);
+        } else if (character.x > 0 && pickedCharacter.x < 0) {
+            dx = Math.abs(character.x) - pickedCharacter.x;
+        } else if (character.x < 0 && pickedCharacter.x < 0) {
+            dx = Math.abs(Math.abs(character.x) + pickedCharacter.x);
+        } else {
+            dx = Math.abs(character.x - pickedCharacter.x);
+        }
+
+        // Y 判斷
+        if (character.y < 0 && pickedCharacter.y > 0) {
+            dy = Math.abs(pickedCharacter.y - character.y);
+        } else if (character.y > 0 && pickedCharacter.y < 0) {
+            dy = Math.abs(character.y - pickedCharacter.y);
+        } else if (character.y < 0 && pickedCharacter.y < 0) {
+            dy = Math.abs(character.y) + Math.abs(pickedCharacter.y);
+        } else {
+            dy = Math.abs(character.y - pickedCharacter.y);
+        }
+
+        if (pickedCharacter.name === '弗利沙' || pickedCharacter.name === '丁滿') {
+            if (character.name !== '丁滿' || character.name !== '弗利沙') {
+                additionalDistance = 2;
+            }
+        }
+
+        if (pickedCharacter.name === '辛巴' ||
+            pickedCharacter.name === '特南克斯' ||
+            pickedCharacter.name === '悟空' ||
+            pickedCharacter.name === '貝吉塔') {
+            if (character.name === '丁滿' || character.name === '弗利沙') {
+                additionalDistance = 2;
+            }
+        }
+        return {
+            ...character,
+            distance: dx + dy + additionalDistance
+        };
+    });
 
     // 排序跟 others 之間的距離，從大到小
     distance.sort((a, b) => b.distance - a.distance);
@@ -75,6 +112,7 @@ function func1(name) {
     const farthestlist = farthest.map((character) => character.name).join('、');
     const nearestlist = nearest.map((character) => character.name).join('、');
     console.log(`func1('${pickedCharacter.name}') //print 最遠${farthestlist}；最近${nearestlist}`);
+    return distance;
 }
 
 func1('辛巴');
