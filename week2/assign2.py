@@ -48,11 +48,23 @@ def func1(name):
         else:
             other["distance"] = dx + dy
 
-    print("others", others)
-    # Calculate the picked character's distance with others
-    # add distance as new value to the list of other
+    # Sorted and pick the farthest and nearest
+    sorted_distance = sorted(others, key=lambda x:x["distance"], reverse=True)
+
+    farthest = max(d["distance"] for d in sorted_distance)
+    nearest = min(d["distance"] for d in sorted_distance)
+
+    farthest_dicts = [d for d in sorted_distance if d["distance"] == farthest]
+    nearest_dicts = [d for d in sorted_distance if d["distance"] == nearest]
+
+    farthest_names = [d["name"] for d in farthest_dicts]
+    nearest_names = [d["name"] for d in nearest_dicts]
+
+    print(f"func1({name}) 最遠{', '.join(d['name'] for d in farthest_dicts)}；最近{'、'.join(d['name'] for d in nearest_dicts)}")
 
 func1("辛巴") # print 最遠弗利沙；最近丁滿、貝吉塔
-#func1("悟空") # print 最遠丁滿、弗利沙；最近特南克斯
-#func1("弗利沙") # print 最遠辛巴，最近特南克斯
-#func1("特南克斯") # print 最遠丁滿，最近悟空
+func1("悟空") # print 最遠丁滿、弗利沙；最近特南克斯
+func1("弗利沙") # print 最遠辛巴，最近特南克斯
+func1("特南克斯") # print 最遠丁滿，最近悟空
+func1("貝吉塔")
+func1("丁滿")
