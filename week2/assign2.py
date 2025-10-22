@@ -17,15 +17,13 @@ def func1(name):
             target_char = char
             break
 
-    #exclude target_chart from characters
+    # Exclude target_chart from characters
     others=[]
     for character in characters:
         if character["name"]!=target_char["name"]:
             others.append(character)
 
-    # print("target_char",target_char)
-    print("others", others)
-
+    # Calculate distance with others
     for other in others:
         if other["x"] < 0 and target_char["x"] > 0:
             dx = abs(target_char["x"] - other["x"])
