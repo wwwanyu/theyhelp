@@ -57,8 +57,8 @@ def func1(name):
     farthest_dicts = [d for d in sorted_distance if d["distance"] == farthest]
     nearest_dicts = [d for d in sorted_distance if d["distance"] == nearest]
 
-    farthest_names = [d["name"] for d in farthest_dicts]
-    nearest_names = [d["name"] for d in nearest_dicts]
+    # farthest_names = [d["name"] for d in farthest_dicts]
+    # nearest_names = [d["name"] for d in nearest_dicts]
 
     print(f"func1({name}) 最遠{', '.join(d['name'] for d in farthest_dicts)}；最近{'、'.join(d['name'] for d in nearest_dicts)}")
 
