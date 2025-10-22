@@ -1,12 +1,12 @@
 # Task 1
 
 characters = [
-    {"name":"悟空", "x": 0, "y": 0},
-    {"name":"特南克斯", "x": 1, "y": -2},
-    {"name":"弗利沙", "x": 4, "y": -1},
-    {"name":"貝吉塔", "x": -4, "y": -1},
-    {"name":"辛巴", "x": -3, "y": 3},
-    {"name":"丁滿", "x": -1, "y": 4}
+    {"name":"悟空", "x": 0, "y": 0, "left": True},
+    {"name":"特南克斯", "x": 1, "y": -2, "left": True},
+    {"name":"弗利沙", "x": 4, "y": -1, "left": False},
+    {"name":"貝吉塔", "x": -4, "y": -1, "left": True},
+    {"name":"辛巴", "x": -3, "y": 3, "left": True},
+    {"name":"丁滿", "x": -1, "y": 4, "left": False}
 ]
 
 def func1(name):
@@ -14,12 +14,45 @@ def func1(name):
 
     for char in characters:
         if char["name"] == name:
-            target_char = char.get("name")
+            target_char = char
             break
-    print(target_char)
 
-    # How to get "Characters" in the function?
+    #exclude target_chart from characters
+    others=[]
+    for character in characters:
+        if character["name"]!=target_char["name"]:
+            others.append(character)
+
+    # print("target_char",target_char)
+    print("others", others)
+
+    for other in others:
+        if other["x"] < 0 and target_char["x"] > 0:
+            dx = abs(target_char["x"] - other["x"])
+        elif other["x"] > 0 and target_char["x"] < 0:
+            dx = abs(other["x"]) - target_char["x"]
+        elif other["x"] < 0 and target_char["x"] < 0:
+            dx = abs(abs(other["x"])+target_char["x"])
+        else:
+            dx = abs(other["x"] - target_char["x"])
+
+        if other["y"] < 0 and target_char["y"] > 0:
+            dy = abs(target_char["y"] - other["y"])
+        elif other["y"] > 0 and target_char["y"] < 0:
+            dy = abs(other["y"]) - target_char["y"]
+        elif other["y"] < 0 and target_char["y"] < 0:
+            dy = abs(other["y"])+target_char["y"]
+        else:
+            dy = abs(other["y"] - target_char["y"])
+
+        if other["left"] != target_char["left"]:
+            other["distance"] = dx + dy +2
+        else:
+            other["distance"] = dx + dy
+
+    print("others", others)
     # Calculate the picked character's distance with others
+    # add distance as new value to the list of other
 
 func1("辛巴") # print 最遠弗利沙；最近丁滿、貝吉塔
 #func1("悟空") # print 最遠丁滿、弗利沙；最近特南克斯
