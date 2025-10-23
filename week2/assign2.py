@@ -67,4 +67,48 @@ func1("悟空") # print 最遠丁滿、弗利沙；最近特南克斯
 func1("弗利沙") # print 最遠辛巴，最近特南克斯
 func1("特南克斯") # print 最遠丁滿，最近悟空
 func1("貝吉塔")
-func1("丁滿")
+func1("丁滿")# Task 2
+def func2(ss, start, end, criteria): # your code here
+# 1. Parse the given values
+    # Split the string into 3 parts and store it for later use
+    if ">=" in criteria:
+        parts = criteria.split(">=")
+        field = parts[0]
+        operator = ">="
+        value = parts[1]
+    elif "<=" in criteria:
+        parts = criteria.split("<=")
+        field = parts[0]
+        operator = ">="
+        value = parts[1]
+    elif ">" in criteria:
+        parts = criteria.split(">")
+        field = parts[0]
+        operator = ">="
+        value = parts[1]
+    elif "<" in criteria:
+        parts = criteria.split("<")
+        field = parts[0]
+        operator = ">="
+        value = parts[1]
+    else:
+        # Handles "="
+        parts = criteria.split("=")
+        field = parts[0]
+        operator = ">="
+        value = parts[1]
+    print(parts)
+
+# 2. A empty list contain tuples to record the booking
+# 3. A function to accept booking request
+# 4. A mechanism to check if it's available
+# 5. A mechanism to print the results
+
+services=[
+    {"name":"S1", "r":4.5, "c":1000},
+    {"name":"S2", "r":3, "c":1200},
+    {"name":"S3", "r":3.8, "c":800}
+]
+
+
+func2(services, 15, 17, "c>=800") # S3
